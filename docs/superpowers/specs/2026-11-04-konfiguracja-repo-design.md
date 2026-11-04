@@ -71,7 +71,7 @@ week-planner/
 │   │   └── lib/api.js           # cienki wrapper na fetch('/api/...')
 │   ├── index.html
 │   ├── vite.config.js           # proxy /api → backend
-│   ├── eslint.config.js
+│   ├── .oxlintrc.json
 │   └── package.json
 ├── electron/
 │   ├── main.js                  # cykl życia aplikacji i okno
@@ -130,7 +130,8 @@ Katalog `pliki/` znika po przeniesieniu PDF-a do `docs/`.
   błąd przy statusie różnym od 2xx. Frontend nigdy nie zna adresu backendu.
 - `App.jsx` przy starcie woła `apiGet('/health')` i pokazuje
   „Backend: połączono ✓” albo komunikat błędu.
-- ESLint z konfiguracji szablonu Vite.
+- Linter z aktualnego szablonu Vite (create-vite 9): oxlint z `.oxlintrc.json`
+  (reguły hooków React i `only-export-components`). Szablon nie używa już ESLint.
 
 ### 5.3 Electron
 
@@ -188,7 +189,7 @@ Jednorazowa konfiguracja dewelopera (opisana w README):
 - **CONTRIBUTING.md** — na wzór `CONTRIBUTIONS.md` ze student-assistant, dostosowany
   do lżejszego workflow: nazwy gałęzi, commity, PR i squash merge, aktualizacja
   gałęzi (`git rebase origin/main`), zasady Pythona (pip-tools, black, flake8, pytest),
-  zasady JS (npm, ESLint), konwencja `/api`, „żadnych sekretów w repo”.
+  zasady JS (npm, oxlint), konwencja `/api`, „żadnych sekretów w repo”.
 - **SCOPE.md** — cel, zakres IN (MVP z PDF-a), „jeśli starczy czasu” (opcje z PDF-a
   i funkcje ze student-assistant, których nie ma w MVP), zakres OUT (sekcja 3
   oraz: aplikacje mobilne, współdzielenie planu, płatności), kryteria ukończenia z PDF-a.
@@ -202,7 +203,7 @@ Jednorazowa konfiguracja dewelopera (opisana w README):
 - `.gitignore`: `.venv/`, `venv/`, `__pycache__/`, `*.pyc`, `.pytest_cache/`, `.env`, `*.db`,
   `node_modules/`, `dist/`, `build/`, `out/`, `.claude/settings.local.json`, `.superpowers/`.
 - `.vscode/settings.json`: black jako formatter Pythona, formatowanie przy zapisie,
-  flake8, ESLint. `.vscode/extensions.json`: Python, Black Formatter, Flake8, ESLint,
+  flake8, oxlint. `.vscode/extensions.json`: Python, Black Formatter, Flake8, Oxc (oxlint),
   Tailwind CSS IntelliSense.
 
 ## 8. GitHub
