@@ -2,7 +2,8 @@ const path = require('node:path')
 const { app, BrowserWindow, dialog } = require('electron')
 const { ensureBackend, stopBackend } = require('./backend')
 
-const BACKEND_PORT = Number(process.env.BACKEND_PORT ?? 8000)
+// `||`, a nie `??`: pusta zmienna (BACKEND_PORT=) też oznacza port domyślny.
+const BACKEND_PORT = Number(process.env.BACKEND_PORT || 8000)
 const FRONTEND_URL = 'http://127.0.0.1:5173'
 const backendDir = path.join(__dirname, '..', 'backend')
 
