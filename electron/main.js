@@ -20,15 +20,24 @@ function createWindow() {
   window.loadURL(FRONTEND_URL)
 }
 
+let quitting = false
+app.on('before-quit', () => {
+  quitting = true
+})
+
 app.whenReady().then(async () => {
   try {
     await ensureBackend({ port: BACKEND_PORT, backendDir })
   } catch (error) {
+    // Ctrl+C w trakcie startu też przerywa backend — wtedy zamykamy się bez okna błędu.
+    if (quitting) return
     dialog.showErrorBox('Nie udało się uruchomić backendu', error.message)
-    app.quit()
+    stopBackend()
+    // Kod 1, żeby `npm run dev` zgłosił porażkę.
+    app.exit(1)
     return
   }
-  createWindow()
+  if (!quitting) createWindow()
 })
 
 app.on('window-all-closed', () => app.quit())
