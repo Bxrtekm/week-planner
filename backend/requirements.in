@@ -1,0 +1,11 @@
+# runtime
+fastapi
+uvicorn
+python-dotenv
+
+# devtools
+pip-tools
+pytest
+httpx2
+black
+flake8
