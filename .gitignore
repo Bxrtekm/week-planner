@@ -1,0 +1,20 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Sekrety i lokalne dane
+.env
+*.db
+
+# Node / build
+node_modules/
+dist/
+build/
+out/
+
+# Narzędzia
+.claude/settings.local.json
+.superpowers/
