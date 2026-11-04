@@ -1,0 +1,11 @@
+{
+  "name": "week-planner",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "lint": "npm run lint -w frontend",
+    "build": "npm run build -w frontend"
+  }
+}
