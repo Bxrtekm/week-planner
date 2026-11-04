@@ -15,7 +15,10 @@ async function isHealthy(port) {
     const response = await fetch(`http://127.0.0.1:${port}/api/health`, {
       signal: AbortSignal.timeout(1000),
     })
-    return response.status === 200
+    if (response.status !== 200) return false
+    // Inny serwer na tym porcie (np. student-assistant) też może zwrócić 200 — sprawdzamy znacznik.
+    const body = await response.json()
+    return body.app === 'week-planner'
   } catch {
     return false
   }

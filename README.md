@@ -48,30 +48,28 @@ npm install
 
 ### 2. Backend
 
-Windows (PowerShell):
+Windows (PowerShell lub cmd):
 
 ```powershell
 cd backend
 py -3.11 -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
+.venv\Scripts\python -m pip install -r requirements.txt
 copy .env.example .env
 cd ..
 ```
-
-Jeśli PowerShell blokuje skrypt `activate`, wykonaj te same kroki w `cmd` albo w Git Bash
-(tam aktywacja to `source .venv/Scripts/activate`).
 
 macOS / Linux:
 
 ```bash
 cd backend
 python3.11 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+.venv/bin/python -m pip install -r requirements.txt
 cp .env.example .env
 cd ..
 ```
+
+Instalacja przez `python` z `.venv` nie wymaga aktywowania środowiska, więc działa także wtedy,
+gdy PowerShell blokuje skrypty. Na Ubuntu/Debianie może być potrzebny pakiet `python3.11-venv`.
 
 Klucz OpenAI (`OPENAI_API_KEY` w `backend/.env`) będzie potrzebny dopiero od Tygodnia 3.
 
@@ -109,6 +107,10 @@ black --check app tests
 flake8 app tests
 ```
 
+Aktywacja `.venv`: Windows cmd `.venv\Scripts\activate.bat`, Git Bash `source .venv/Scripts/activate`,
+macOS/Linux `source .venv/bin/activate`. W PowerShell skrypt aktywacji bywa zablokowany;
+wtedy użyj cmd, Git Bash albo wywołuj narzędzia przez `.venv\Scripts\python -m pytest` (analogicznie `-m black`, `-m flake8`).
+
 Frontend (w katalogu głównym):
 
 ```bash
@@ -135,6 +137,8 @@ BACKEND_PORT=8001 npm run dev
 - **„Electron failed to install correctly”**: pobieranie binarki Electrona zostało przerwane.
   Ponów je poleceniem `node node_modules/electron/install.js`.
 - **Okno „Nie znaleziono backend/.venv”**: wykonaj kroki z sekcji [Backend](#2-backend).
+- **Okno „Backend zakończył działanie” z `No module named uvicorn`**: zależności nie trafiły do `.venv`.
+  Powtórz polecenie `... -m pip install -r requirements.txt` z sekcji [Backend](#2-backend).
 - **Okno „Backend zakończył działanie” z błędem `[Errno 10048]` lub `address already in use`**:
   port 8000 zajmuje inny program. Zamknij go albo ustaw `BACKEND_PORT`.
 
