@@ -83,6 +83,10 @@ Otworzy się okno aplikacji ze statusem „Backend: połączono ✓”. Electron
 i zamyka go razem z aplikacją. Jeśli backend już działa na porcie 8000 (np. uruchomiony ręcznie
 przez `uvicorn app.main:app --reload`), Electron użyje go zamiast startować drugi.
 
+Backend uruchamiany przez Electron działa bez `--reload`, więc nie widzi zmian w kodzie Pythona
+do czasu restartu aplikacji. Przy pracy nad backendem uruchom go najpierw ręcznie (w `backend/`,
+z aktywnym `.venv`): `uvicorn app.main:app --reload`, a dopiero potem `npm run dev`.
+
 Przy pierwszym uruchomieniu Electron pobiera swoją binarkę (ok. 160 MB).
 
 ## Struktura repozytorium
@@ -141,6 +145,13 @@ BACKEND_PORT=8001 npm run dev
   Powtórz polecenie `... -m pip install -r requirements.txt` z sekcji [Backend](#2-backend).
 - **Okno „Backend zakończył działanie” z błędem `[Errno 10048]` lub `address already in use`**:
   port 8000 zajmuje inny program. Zamknij go albo ustaw `BACKEND_PORT`.
+- **Linux (np. Ubuntu 24.04): Electron nie startuje z błędem o `chrome-sandbox`**: system blokuje
+  sandbox Chromium uruchamiany z `node_modules`. Nadaj plikowi wymagane uprawnienia (raz, po `npm install`):
+
+  ```bash
+  sudo chown root:root node_modules/electron/dist/chrome-sandbox
+  sudo chmod 4755 node_modules/electron/dist/chrome-sandbox
+  ```
 
 ## Dokumenty
 
