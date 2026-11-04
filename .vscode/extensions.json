@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.black-formatter",
+    "ms-python.flake8",
+    "oxc.oxc-vscode",
+    "bradlc.vscode-tailwindcss"
+  ]
+}

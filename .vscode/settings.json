@@ -1,0 +1,9 @@
+{
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true
+  },
+  "python.defaultInterpreterPath": "backend/.venv",
+  "flake8.args": ["--config=backend/.flake8"],
+  "files.eol": "\n"
+}
