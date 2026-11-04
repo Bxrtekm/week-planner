@@ -141,9 +141,9 @@ Katalog `pliki/` znika po przeniesieniu PDF-a do `docs/`.
   pokazuje `dialog.showErrorBox` z treścią błędu i zamyka aplikację.
 - `backend.js`:
   1. `GET http://127.0.0.1:${port}/api/health`. Jeśli odpowiada 200 z `"app": "week-planner"`,
-     używa istniejącego backendu. Sam status 200 nie wystarcza, bo inne aplikacje
-     (np. student-assistant) też mają `/api/health`. Używa istniejącego backendu (np. `uvicorn --reload` uruchomionego ręcznie) i nie
-     będzie go zamykać.
+     używa istniejącego backendu (np. `uvicorn --reload` uruchomionego ręcznie) i nie
+     będzie go zamykać. Sam status 200 nie wystarcza, bo inne aplikacje
+     (np. student-assistant) też mają `/api/health`.
   2. W przeciwnym razie szuka interpretera w `backend/.venv`
      (`Scripts/python.exe` na Windowsie, `bin/python` na macOS/Linux). Brak →
      błąd „Nie znaleziono backend/.venv — wykonaj kroki z README, sekcja Backend”.
