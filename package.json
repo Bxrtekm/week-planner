@@ -2,10 +2,16 @@
   "name": "week-planner",
   "private": true,
   "workspaces": [
-    "frontend"
+    "frontend",
+    "electron"
   ],
   "scripts": {
+    "dev": "concurrently -k -n vite,electron -c cyan,magenta \"npm run dev -w frontend\" \"wait-on tcp:127.0.0.1:5173 && npm start -w electron\"",
     "lint": "npm run lint -w frontend",
     "build": "npm run build -w frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6",
+    "wait-on": "^9.5.1"
   }
 }
