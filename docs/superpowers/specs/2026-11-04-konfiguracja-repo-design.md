@@ -2,7 +2,7 @@
 
 Data: 2026-11-04
 Repozytorium: https://github.com/Bxrtekm/week-planner
-Źródła: `docs/plan-realizacji.pdf` (założenia projektu), https://github.com/Neeklines/student-assistant (projekt wzorcowy)
+Źródła: `docs/plan-realizacji.pdf` (założenia projektu)
 
 ## 1. Cel
 
@@ -23,7 +23,7 @@ okno aplikacji desktopowej, które pokazuje „Backend: połączono ✓”.
 |---|---|
 | Zakres | Konfiguracja repo + szkielet hello world. Model danych i Alembic to pierwsze issue Tygodnia 1. |
 | Język | Dokumentacja, szablony, issues i commity po polsku. Identyfikatory w kodzie po angielsku. |
-| Dostawca AI | OpenAI (jak w student-assistant). SDK dochodzi w Tygodniu 3. |
+| Dostawca AI | OpenAI. SDK dochodzi w Tygodniu 3. |
 | Pakiety JS | npm + npm workspaces. |
 | Python | 3.11, zależności przez pip-tools (`requirements.in` → `requirements.txt`). |
 | Architektura | Monorepo zgodne z PDF-em: `/frontend`, `/backend`, `/electron`, `/docs`. Electron jako cienki launcher. |
@@ -33,7 +33,7 @@ okno aplikacji desktopowej, które pokazuje „Backend: połączono ✓”.
 
 ## 3. Konsekwencje tego, że to aplikacja desktopowa
 
-Względem student-assistant (aplikacji webowej):
+W porównaniu z typową aplikacją webową:
 
 - Jedyny wspierany sposób uruchamiania to okno Electrona. README nie opisuje
   pracy w przeglądarce.
@@ -116,13 +116,12 @@ Katalog `pliki/` znika po przeniesieniu PDF-a do `docs/`.
   backend serwuje frontend z tego samego originu (sekcja 5.5).
 - `requirements.in`: `fastapi`, `uvicorn`, `python-dotenv` oraz narzędzia
   deweloperskie `pip-tools`, `pytest`, `httpx`, `black`, `flake8`.
-- black i flake8 z `max-line-length = 88`, jak w student-assistant.
+- black i flake8 z `max-line-length = 88`.
 
 ### 5.2 Frontend
 
 - Projekt Vite + React 19 w JSX, Tailwind v4 przez `@tailwindcss/vite`, ikony
-  `lucide-react`. To ten sam zestaw co w student-assistant, więc komponenty
-  (widoki dnia i tygodnia, czat) da się przenosić z niewielkimi zmianami.
+  `lucide-react`.
 - `vite.config.js`: serwer na `127.0.0.1:5173` ze `strictPort: true`, proxy `/api` →
   `http://127.0.0.1:${BACKEND_PORT ?? 8000}`. Jawne `127.0.0.1` zamiast `localhost`
   omija problem rozwiązywania `localhost` do `::1` na Windowsie.
@@ -143,7 +142,7 @@ Katalog `pliki/` znika po przeniesieniu PDF-a do `docs/`.
   1. `GET http://127.0.0.1:${port}/api/health`. Jeśli odpowiada 200 z `"app": "week-planner"`,
      używa istniejącego backendu (np. `uvicorn --reload` uruchomionego ręcznie) i nie
      będzie go zamykać. Sam status 200 nie wystarcza, bo inne aplikacje
-     (np. student-assistant) też mają `/api/health`.
+     też mogą mieć `/api/health`.
   2. W przeciwnym razie szuka interpretera w `backend/.venv`
      (`Scripts/python.exe` na Windowsie, `bin/python` na macOS/Linux). Brak →
      błąd „Nie znaleziono backend/.venv — wykonaj kroki z README, sekcja Backend”.
@@ -187,12 +186,11 @@ Jednorazowa konfiguracja dewelopera (opisana w README):
 - **README.md** — czym jest aplikacja, główne funkcje (MVP z PDF-a), stack, wymagania
   (Python 3.11, Node 24), szybki start (5.4), struktura katalogów, polecenia
   testów i lintu, odnośniki do CONTRIBUTING i SCOPE.
-- **CONTRIBUTING.md** — na wzór `CONTRIBUTIONS.md` ze student-assistant, dostosowany
-  do lżejszego workflow: nazwy gałęzi, commity, PR i squash merge, aktualizacja
+- **CONTRIBUTING.md** — zasady pracy dla lżejszego workflow: nazwy gałęzi, commity, PR i squash merge, aktualizacja
   gałęzi (`git rebase origin/main`), zasady Pythona (pip-tools, black, flake8, pytest),
   zasady JS (npm, oxlint), konwencja `/api`, „żadnych sekretów w repo”.
 - **SCOPE.md** — cel, zakres IN (MVP z PDF-a), „jeśli starczy czasu” (opcje z PDF-a
-  i funkcje ze student-assistant, których nie ma w MVP), zakres OUT (sekcja 3
+  i dodatkowe funkcje spoza MVP), zakres OUT (sekcja 3
   oraz: aplikacje mobilne, współdzielenie planu, płatności), kryteria ukończenia z PDF-a.
 - **CLAUDE.md** — krótki kontekst dla asystentów AI: opis projektu, polecenia,
   konwencje, odesłanie do CONTRIBUTING.md.
@@ -285,7 +283,7 @@ szkielet, start backendu z Electrona) nie dostają issues.
 22. Dokumentacja i przygotowanie demonstracji — `docs`
 
 **Bez milestone'a (`opcjonalne`)**
-23. Załączanie zdjęcia planu zajęć w czacie (jak w student-assistant) — `ai`, `frontend`
+23. Załączanie zdjęcia planu zajęć w czacie — `ai`, `frontend`
 24. Powiadomienia o nadchodzących wydarzeniach — `frontend`, `electron`
 25. Widok miesiąca — `frontend`
 26. Statystyki — `frontend`, `backend`

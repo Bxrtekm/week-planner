@@ -96,7 +96,7 @@ git commit -m "Dodaj pliki bazowe repozytorium i przenieś plan realizacji do do
 
 - [ ] **Step 1: Środowisko i zależności**
 
-`backend/requirements.in`: sekcja runtime `fastapi`, `uvicorn`, `python-dotenv`; sekcja devtools `pip-tools`, `pytest`, `httpx`, `black`, `flake8` (z komentarzami `# runtime` / `# devtools`, jak w student-assistant).
+`backend/requirements.in`: sekcja runtime `fastapi`, `uvicorn`, `python-dotenv`; sekcja devtools `pip-tools`, `pytest`, `httpx`, `black`, `flake8` (z komentarzami `# runtime` / `# devtools`).
 
 ```bash
 cd backend && py -3.11 -m venv .venv && .venv/Scripts/python -m pip install pip-tools && .venv/Scripts/pip-compile requirements.in && .venv/Scripts/pip install -r requirements.txt
@@ -434,7 +434,7 @@ Bez instrukcji uruchamiania w przeglądarce.
 
 - [ ] **Step 2: `CONTRIBUTING.md`**
 
-Wzór: `CONTRIBUTIONS.md` ze student-assistant, po polsku i dla lżejszego workflow:
+Po polsku, dla lżejszego workflow:
 - TL;DR: nie pushujemy na `main`; gałąź → PR → zielone CI → squash merge (akceptacja mile widziana, niewymagana).
 - Gałęzie `feature/`, `fix/`, `chore/`, `docs/` z przykładami.
 - Commity: po polsku, krótko, tryb rozkazujący („Dodaj widok tygodnia”).
@@ -449,7 +449,7 @@ Wzór: `CONTRIBUTIONS.md` ze student-assistant, po polsku i dla lżejszego workf
 
 - Cel (sekcja 1 PDF-a).
 - Zakres IN: 5 punktów MVP z PDF-a jako checklisty `- [ ]`.
-- „Jeśli starczy czasu”: preferencje, tryb ciemny, synchronizacja z zewnętrznym kalendarzem, powiadomienia, statystyki (PDF) oraz ze student-assistant: załączanie zdjęcia planu zajęć w czacie i widok miesiąca.
+- „Jeśli starczy czasu”: preferencje, tryb ciemny, synchronizacja z zewnętrznym kalendarzem, powiadomienia, statystyki (PDF) oraz załączanie zdjęcia planu zajęć w czacie i widok miesiąca.
 - Zakres OUT: logowanie i konta, serwer i MySQL, aplikacje mobilne, współdzielenie planu, płatności.
 - Kryteria ukończenia: 5 punktów z sekcji 7 PDF-a.
 
