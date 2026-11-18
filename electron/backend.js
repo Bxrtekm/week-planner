@@ -16,7 +16,7 @@ async function isHealthy(port) {
       signal: AbortSignal.timeout(1000),
     })
     if (response.status !== 200) return false
-    // Inny serwer na tym porcie (np. student-assistant) też może zwrócić 200 — sprawdzamy znacznik.
+    // Inny serwer na tym porcie też może zwrócić 200 — sprawdzamy znacznik.
     const body = await response.json()
     return body.app === 'week-planner'
   } catch {

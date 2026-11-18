@@ -18,16 +18,11 @@ ale też bezpośrednio modyfikować plan użytkownika oraz proponować harmonogr
 
 ## Jeśli starczy czasu
 
-Z planu realizacji:
-
 - preferencje użytkownika (godziny nauki, długość przerw),
 - tryb ciemny,
 - synchronizacja z zewnętrznym kalendarzem,
 - powiadomienia,
-- statystyki.
-
-Z poprzedniego projektu ([student-assistant](https://github.com/Neeklines/student-assistant)):
-
+- statystyki,
 - załączanie zdjęcia planu zajęć w czacie (asystent odczytuje plan ze zdjęcia),
 - widok miesiąca.
 
